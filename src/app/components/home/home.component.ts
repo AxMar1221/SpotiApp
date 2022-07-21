@@ -6,15 +6,14 @@ import { SpotifyService } from 'src/app/services/spotify.service';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-
   newReleases: any[] = []
 
   constructor( private spotify: SpotifyService ) { 
 
       this.spotify.getNewREleases()
         .subscribe( (data: any) => {
-          console.log(data.albums.items);
-          this.newReleases = data.albums.items;
+          this.newReleases = data;
         })
   }
 }
+   
