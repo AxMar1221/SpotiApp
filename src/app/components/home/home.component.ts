@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
@@ -10,9 +10,9 @@ export class HomeComponent {
 
   constructor( private spotify: SpotifyService ) { 
 
-      this.spotify.getNewREleases()
+      this.spotify.getNewReleases()
         .subscribe( (data: any) => {
-          this.newReleases = data;
+          this.newReleases = data['albums'].items;
         })
   }
 }

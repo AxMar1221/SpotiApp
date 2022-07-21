@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +11,25 @@ export class SpotifyService {
 
   }
 
-  getNewREleases() {
-    const headers = new HttpHeaders({
-      'Authorization':'Bearer BQAaHfmGyAxO8LBT0WrmElYclevaRZtvHF0Q0upKngWUN22ji3fIGW0CwC86lqGsJ9mYmsVPo9x5DQNxsapDJNRTm2woX0zJnYWADYoNUPmG-PimDlk'
-    })
-    return this.http.get('https://api.spotify.com/v1/browse/new-releases', { headers })
-              .pipe( map( (data: any) =>{
-                return data['albums'].items
-              }));
-  }
+  // getQuery( query: string ) {
+  //   const url = `https://api.spotify.com/v1/${ query }`;
+  //   const headers = new HttpHeaders({
+  //     'Authorization': 'Bearer BQBdbvTww9RL3LSVnFi6_WyIzR-NGSIAuFLQZEQhY2TUsKe_1H0784dL8rtUrjAQZ4fPMj4WvDCy7R448VOog45_hnCF4nCino0zIoajrGr1blxtSkE'
+  //   });
+  //   return this.http.get(url, { headers });
+  // }
 
-  getArtist( termino: string ) {
+  getNewReleases() {
     const headers = new HttpHeaders({
-      'Authorization':'Bearer BQAaHfmGyAxO8LBT0WrmElYclevaRZtvHF0Q0upKngWUN22ji3fIGW0CwC86lqGsJ9mYmsVPo9x5DQNxsapDJNRTm2woX0zJnYWADYoNUPmG-PimDlk'
+    'Authorization':'Bearer BQB-GbVDjqoyOCnVxoPZhcOY_I0E5v82DLJePzFl_n7XilICOwlc-kM2L4BJSdnQyj4d2U0MxWlylnX8Wd29LZuTEom6Bz7szGdO0dPPmK9sOLtAXq0'
+  })
+  return this.http.get('https://api.spotify.com/v1/browse/new-releases', { headers });      
+}
+  getArtist( termino: string ) {
+  
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer BQB-GbVDjqoyOCnVxoPZhcOY_I0E5v82DLJePzFl_n7XilICOwlc-kM2L4BJSdnQyj4d2U0MxWlylnX8Wd29LZuTEom6Bz7szGdO0dPPmK9sOLtAXq0'
     })
-    return this.http.get(`https://api.spotify.com/v1/search?q=${ termino} &type=artist&limit=15`, { headers })
-                .pipe( map( ( data: any) =>{
-                  return data['artists'].items
-                }));
+    return this.http.get(`https://api.spotify.com/v1/search?q=${ termino } &type=artist&limit=15`, { headers });    
   }
 }
