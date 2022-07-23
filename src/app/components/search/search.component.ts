@@ -16,7 +16,7 @@ export class SearchComponent {
     this.loading = true;
     this.spotify.getArtists( termino )
       .subscribe( (data: any) => {
-        this.artistas = data['artists'].items;
+        this.artistas = data;
         this.loading = false;
       });
   }
