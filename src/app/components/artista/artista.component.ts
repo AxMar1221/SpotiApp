@@ -18,7 +18,7 @@ export class ArtistaComponent {
 
     this.router.params.subscribe( params => {
       this.getArtist( params['id']);
-      // this.getTopTracks( params['id']);
+      this.getTopTracks( params['id']);
     });
   }
 
@@ -26,19 +26,18 @@ export class ArtistaComponent {
 
     this.loadingArtist = true;
 
-    this.spotify.getArtists( id )
+    this.spotify.getArtist( id )
         .subscribe( artista => {
           this.artista = artista;
           this.loadingArtist = false;
         });
   }
 
-  // getTopTracks( id: string) {
-  //   this.spotify.getTopTracks( id )
-  //       .subscribe( topTracks => {
-  //         console.log( topTracks );
-  //         // this.topTracks = topTracks;
-  //       });
-  // }
+  getTopTracks( id: string) {
+    this.spotify.getTopTracks( id )
+        .subscribe( topTracks => {
+          this.topTracks = topTracks;
+        });
+  }
   
 }

@@ -1,7 +1,7 @@
-<div class="row row-cols-1 row-cols-md-3 g-4 animated fadeIn">
+<div class="row m-5 row-cols-1 row-cols-md-3 g-4 animated fadeIn">
 
     <div (click)="verArtista( item )" *ngFor="let item of items" class="card puntero">
-      <img [src]="item.images | noimage" class="card-img-top" alt="...">
+      <img [src]="item.images | noimage" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">
           {{ item.name }}
