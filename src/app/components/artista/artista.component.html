@@ -27,22 +27,26 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Foto</th>
-                    <th>Album</th>
-                    <th>Canción</th>
-                    <th>Vista previa</th>
+                    <th style="color:white;">Foto</th>
+                    <th style="color:white;">Album</th>
+                    <th style="color:white;">Canción</th>
+                    <th style="color:white;">Vista previa</th>
                 </tr> 
             </thead>
 
             <tbody>
                 <tr *ngFor="let tracks of topTracks" >
-                    <td>
+                    <td style="color:white;">
                         <img [src]="tracks.album.images | noimage" class="img-thumb">
                     </td>
-                    <td>{{ tracks.album.name }}</td>
-                    <td>{{ tracks.name }}</td>
-                    <td>
-                        <audio [src]="tracks.preview_url" controls></audio>
+                    <td style="color:white;">{{ tracks.album.name }}</td>
+                    <td style="color:white;">{{ tracks.name }}</td>
+                    <td style="color:white;">
+                        <iframe [src]="tracks.uri | domseguro"
+                                frameborder="0" 
+                                allowtransparency="true" 
+                                ></iframe>
+                        <!-- <audio [src]="tracks.preview_url" controls></audio> -->
                     </td>
                 </tr>
             </tbody>
